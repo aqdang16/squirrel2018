@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Home Page </title>
+</head>
+<body>
+	<p> lets go to <a href="https://www.facebook.com">Facebook</a>.</p>
+	<h2>Input Form</h2>
+	<!-- <h3>Reporter</h3> -->
+	<form action="/action_page.php" target="_blank">
+		Name (optional):<br>
+		<input type="text" name="Name"><br>
+		
+		Email (optional):<br>
+		<input type="email" name="Email"><br>
+		
+		Phone (optional):<br>
+		<input type="text" name="Phone"><br>
+		<br>
+		Are you reporting your sickness?<br>
+		<input type="radio" name="whoReport" value=True> Yes    
+		<input type="radio" name="whoReport" value=False> No<br>
+		
+		<select name="FamOrHealth">
+			<option value="fam"> Immediate family member/ legal guardian </option>
+			<option value="health"> Health professional </option>
+		</select><br>
+		<h4>Patient information</h4>
+		Age:<br>
+		<input type="number" min="0" max="150" name="Age" required> year(s) old. <br>
+		Gender:<br>
+		<input type="radio" name="whoReport" value="Male"> Male
+		<input type="radio" name="whoReport" value="Female"> Female
+		<input type="radio" name="whoReport" value="Other"> Other<br>
+		What is the disease?<br>
+		<select name="disease" id="disease" required>
+			<option value="">None</option>
+			<option value="asthma"> Asthma </option>
+			<option value="cancer"> Cancer </option>
+			<option value="chickenpox"> Chickenpox </option>
+			<option value="ebola"> Ebola </option>
+			<option value="hepatitisB"> Hepatitis B </option>
+			<option value="hiv"> HIV/AIDS </option>
+			<!-- <option></option>
+			<option></option>
+			<option></option>
+			<option></option> -->
+		</select><br>
+		Start day * <br>
+		<input type="date" name="start" required><br>
+		End day <br>
+		<input type="date" name="end"><br>
+		Additional information <br>
+		<textarea name="addinf" rows="5" cols="17"> </textarea><br>
+		<input type="checkbox" name="term" val="True" required> I agree to the term of usage. <br>
+
+		<br>
+		<input type="submit" name="submitbutton" onclick="alert('Thank you! You have submitted your form')">
+	</form>
+
+</body>
+</html>
