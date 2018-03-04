@@ -77,6 +77,15 @@
 	<div class="column form">
 		<h2>Input Form</h2>
 	<!-- <h3>Reporter</h3> -->
+	<script type="text/javascript">
+		function yeshandle() {
+			document.getElementById("foh").style.display = "none";
+			document.getElementById("selectfoh").value = "";
+		}
+		function nohandle() {
+			document.getElementById("foh").style.display = "block";
+		}
+	</script>
 	<form action="connection.php" method="post">
 		Name (optional):<br>
 		<input type="text" name="Name"><br>
@@ -88,13 +97,17 @@
 		<input type="text" name="Phone"><br>
 		<br>
 		Are you reporting your sickness?<br>
-		<input type="radio" name="whoReport" value=True> Yes    
-		<input type="radio" name="whoReport" value=False> No<br>
+		<input type="radio" name="whoReport" value=True onclick="yeshandle()"> Yes    
+		<input type="radio" name="whoReport" value=False onclick="nohandle()"> No<br>
 		
-		<select name="FamOrHealth">
+		<div  id="foh" style="display: none">
+		You are ...<br>
+		<select id="selectfoh" name="FamOrHealth">
+			<option value=""> N/A </option>
 			<option value="fam"> Immediate family member/ legal guardian </option>
 			<option value="health"> Health professional </option>
 		</select><br>
+		</div>
 		<h4>Patient information</h4>
 		Age:<br>
 		<input type="number" min="0" max="150" name="Age" required> year(s) old. <br>

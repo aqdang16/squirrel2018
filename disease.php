@@ -32,11 +32,12 @@
 					die("Connection failed: " . $conn->connect_error);
 				} 
 
-				$sql = "SELECT locationlat, locationlon FROM `epidemic`";
+				$sql = "SELECT disease, locationlat, locationlon FROM `epidemic`";
 				if (mysqli_query($conn, $sql)) {
 					$result = mysqli_query($conn, $sql);
 					$latlist = array();
 					$lonlist = array();
+					$diseases = array();
 					if (mysqli_num_rows($result) > 0) {
 						
 						// $row = mysqli_fetch_assoc($result);
@@ -44,9 +45,11 @@
 						while($row = mysqli_fetch_assoc($result)) {
 							array_push($latlist, $row["locationlat"]);
 							array_push($lonlist, $row["locationlon"]);
+							array_push($diseases, $row["disease"]);
 						}
 					$latlist_json = json_encode($latlist);
 					$lonlist_json = json_encode($lonlist);
+					$disease_json = json_encode($diseases);
 					} else {
 						echo "no result";
 					}
@@ -64,6 +67,7 @@
 				// // var lonlist = ["156.903274","0","-120.901724"]
 				var latlist = <?=$latlist_json ?>;
 				var lonlist = <?=$lonlist_json ?>;
+				var dislist = <?=$disease_json ?>;
 
 
 				function initMap() {
@@ -90,7 +94,12 @@
 				      	var latLng = new google.maps.LatLng(latlist[i],lonlist[i]);
 				      	var marker = new google.maps.Marker({
 				      		position: latLng,
-				      		map: map
+				      		map: map,
+				      		label: {
+				      			text: dislist[i],
+				      			color: "black",
+				      			fontWeight: "bold"
+				      		}
 				      	});
 				      }
 			      }
