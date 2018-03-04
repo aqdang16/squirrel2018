@@ -16,7 +16,7 @@ $disease = $_REQUEST['disease'];
 $startdate = (date) $_REQUEST['start'];
 $enddate = (date) $_REQUEST['end'];
 $addition = $_REQUEST['addinf'];
-$term = $_REQUEST['term');
+$term = $_REQUEST['term'];
 $lat = 0;
 $lon = 0;
 

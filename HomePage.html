@@ -5,6 +5,28 @@
 	<link rel="stylesheet" type="text/css" href="HomePageCSS.css">
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- <script type="text/javascript">
+		function initGeolocation()
+		{
+			if( navigator.geolocation ){
+			// Call getCurrentPosition with success and failure callbacks
+			navigator.geolocation.getCurrentPosition( success, fail );}
+			else{
+				alert("Sorry, your browser does not support geolocation services.");}
+		}
+
+		function success(position)
+		{
+		document.getElementById('long').value = position.coords.longitude;
+		document.getElementById('lat').value = position.coords.latitude;
+		}
+
+		function fail()
+		{
+		// Could not obtain location
+		}
+
+	</script> -->
 </head>
 <body>
 	<div class="header">
@@ -17,19 +39,82 @@
 	</div>
 	<div class="row">
 		<div class= "column map" id="map">
-			<script>
+			<!-- <FORM NAME="rd" METHOD="POST" ACTION="index.html">
+			<INPUT TYPE="text" NAME="long" ID="long" VALUE="">
+			<INPUT TYPE="text" NAME="lat" ID="lat" VALUE=""> -->
+			<!-- <script>
+		    	function initMap() {
+			      	var lon = ""
+			      	var lat = ""
+			      	if( navigator.geolocation ){
+					// Call getCurrentPosition with success and failure callbacks
+					navigator.geolocation.getCurrentPosition(success, fail);}
+					else{
+					alert("Sorry, your browser does not support geolocation services.");}
+
+			        var uluru = {lat: parseInt(lat) , lng: parseInt(lon) };
+			        // parseInt(document.getElementById('long').value) parseInt(document.getElementById('lat').value)
+			        var map = new google.maps.Map(document.getElementById('map'), {
+			          zoom: 4,
+			          center: uluru
+			        });
+			        var marker = new google.maps.Marker({
+			          position: uluru,
+			          map: map
+			        });
+		    	
+			    	function success(position)	{
+						lon = position.coords.longitude;
+						lat = position.coords.latitude;
+					}
+
+					function fail()	{
+					// Could not obtain location
+					}
+				}
+    		</script> -->
+    		<script>
+		      // Note: This example requires that you consent to location sharing when
+		      // prompted by your browser. If you see the error "The Geolocation service
+		      // failed.", it means you probably did not give permission for the browser to
+		      // locate you.
+		      var map, infoWindow;
 		      function initMap() {
-		        var uluru = {lat: -25.363, lng: 131.044};
-		        var map = new google.maps.Map(document.getElementById('map'), {
-		          zoom: 4,
-		          center: uluru
+		        map = new google.maps.Map(document.getElementById('map'), {
+		          center: {lat: -34.397, lng: 150.644},
+		          zoom: 6
 		        });
-		        // var marker = new google.maps.Marker({
-		        //   position: uluru,
-		        //   map: map
-		        // });
+		        infoWindow = new google.maps.InfoWindow;
+
+		        // Try HTML5 geolocation.
+		        if (navigator.geolocation) {
+		          navigator.geolocation.getCurrentPosition(function(position) {
+		            var pos = {
+		              lat: position.coords.latitude,
+		              lng: position.coords.longitude
+		            };
+
+		            infoWindow.setPosition(pos);
+		            infoWindow.setContent('Location found.');
+		            infoWindow.open(map);
+		            map.setCenter(pos);
+		          }, function() {
+		            handleLocationError(true, infoWindow, map.getCenter());
+		          });
+		        } else {
+		          // Browser doesn't support Geolocation
+		          handleLocationError(false, infoWindow, map.getCenter());
+		        }
 		      }
-    </script>
+
+		      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+		        infoWindow.setPosition(pos);
+		        infoWindow.setContent(browserHasGeolocation ?
+		                              'Error: The Geolocation service failed.' :
+		                              'Error: Your browser doesn\'t support geolocation.');
+		        infoWindow.open(map);
+		      }
+		    </script>
 
 			 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqI1_wpkulkLqJwe-ERnWFhwQENMpcFMs&callback=initMap" type="text/javascript"></script>
 			<!--
@@ -39,8 +124,9 @@
 
 
 		</div>
-		<div class="column form">
-			<h2>Input Form</h2>
+	<!-- </div> -->
+	<div class="column form">
+		<h2>Input Form</h2>
 	<!-- <h3>Reporter</h3> -->
 	<form action="form_processing.php" method="post">
 		Name (optional):<br>
@@ -93,7 +179,7 @@
 		<input type="submit" name="submit" value="submit" onclick="alert('Thank you! You have submitted your form')">
 	</form>
 			
-		</div>
 	</div>
+	
 </body>
 </html>
