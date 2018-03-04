@@ -62,10 +62,10 @@
 			
 			<script type="text/javascript">
 				var map;
-				// var latlist = ["32.325234","30","-75.21897"]
-				// var lonlist = ["156.903274","0","-120.901724"]
-				var latlist = <?php $latlist ?>;
-				var lonlist = <?php $lonlist ?>;
+				var latlist = ["32.325234","30","-75.21897"]
+				var lonlist = ["156.903274","0","-120.901724"]
+				// var latlist = <?php $latlist ?>;
+				// var lonlist = <?php $lonlist ?>;
 
 				function initMap() {
 			    	map = new google.maps.Map(document.getElementById('map'), {
@@ -110,7 +110,30 @@
 	
 		<div class="column form">
 		<h1>I would like to know more about ... </h1>
+		<select name="disease" id="disease" onchange="showDiv(this)">
+			<option value="">None</option>
+			<option value="asthma"> Asthma </option>
+			<option value="cancer"> Cancer </option>
+			<option value="chickenpox"> Chickenpox </option>
+			<option value="ebola"> Ebola </option>
+			<option value="hepatitisB"> Hepatitis B </option>
+			<option value="hiv"> HIV/AIDS </option>
+		</select>
+
+		<script type="text/javascript">
+			function showDiv(elem) {
+				var diseaselist = ["asthma","cancer","chickenpox","ebola","hepatitisB","hiv"];
+				for (var i = 0; i<diseaselist.length; i++){
+					if (elem.value == diseaselist[i]) {
+						document.getElementById(diseaselist[i]).style.display = "block";
+					} else {
+						document.getElementById(diseaselist[i]).style.display = "none";
+					}
+				}
+			}
+		</script>
 		
+		<div id="asthma" style="display: none;">
 		<h1>Asthma</h1>
 		<h3>Overview</h3>
 		<p>A condition in which a person's airways become inflamed, narrow and swell, and produce extra mucus, which makes it difficult to breathe.</p>
@@ -120,7 +143,9 @@
 		<p>Treatment consists of self-care and bronchodilators<br>Asthma can usually be managed with rescue inhalers to treat symptoms (albuterol) and controller inhalers that prevent symptoms (steroids). Severe cases may require longer-acting inhalers that keep the airways open (formoterol, salmeterol, tiotropium), as well as oral steroids.</p>
 		<h5>References</h5>
 		<a href="https://www.webmd.com/asthma/default.htm"> WebMD Asthma  </a>
+		</div>
 
+		<div id="cancer" style="display: none;">
 		<h1>Cancer</h1>
 		<h3>Overview</h3>
 		<p>Cancer, also called malignancy, is an abnormal growth of cells. There are more than 100 types of cancer, including breast cancer, skin cancer, lung cancer, colon cancer, prostate cancer, and lymphoma. Symptoms vary depending on the type. Cancer treatment may include chemotherapy, radiation, and/or surgery. </p>
@@ -134,7 +159,9 @@
 		<p>Cancer prevention is defined as active measures to decrease cancer risk. The vast majority of cancer cases are due to environmental risk factors. Many of these environmental factors are controllable lifestyle choices. Thus, cancer is generally preventable. Between 70% and 90% of common cancers are due to environmental factors and therefore potentially preventable.<br>Greater than 30% of cancer deaths could be prevented by avoiding risk factors including: tobacco, excess weight/obesity, poor diet, physical inactivity, alcohol, sexually transmitted infections and air pollution. Not all environmental causes are controllable, such as naturally occurring background radiation and cancers caused through hereditary genetic disorders and thus are not preventable via personal behavior.</p>
 		<h5>References</h5>
 		<a href="https://en.wikipedia.org/wiki/Cancer"> Wikipedia Cancer</a>
+		</div>
 
+		<div id="chickenpox" style="display: none;">
 		<h1>Chickenpox</h1>
 		<h3>Overview</h3>
 		<p>Chickenpox, also known as varicella, is a highly contagious disease caused by the initial infection with varicella zoster virus (VZV). The disease results in a characteristic skin rash that forms small, itchy blisters, which eventually scab over.</p>
@@ -146,8 +173,9 @@
 		<p>The chickenpox (varicella) vaccine is the best way to prevent chickenpox. Experts from the Centers for Disease Control and Prevention (CDC) estimate that the vaccine provides complete protection from the virus for nearly 98 percent of people who receive both of the recommended doses. When the vaccine doesn't provide complete protection, it significantly lessens the severity of the disease.<br>The spread of chickenpox can be prevented by isolating affected individuals. Contagion is by exposure to respiratory droplets, or direct contact with lesions, within a period lasting from three days before the onset of the rash, to four days after the onset of the rash. The chickenpox virus is susceptible to disinfectants, notably chlorine bleach (i.e., sodium hypochlorite). Like all enveloped viruses, it is sensitive to desiccation, heat and detergents.</p>
 		<h5>References</h5>
 		<a href="ttps://www.mayoclinic.org/diseases-conditions/chickenpox/symptoms-causes/syc-20351282?utm_source=Google&utm_medium=abstract&utm_content=Chickenpox&utm_campaign=Knowledge-panel"> Mayo Clinic Chickenpox</a>
+		</div>
 
-
+		<div id="ebola" style="display: none;">
 		<h1>Ebola</h1>
 		<h3>Overview</h3>
 		<p>Ebola virus disease (EVD), also known as Ebola hemorrhagic fever (EHF) or simply Ebola, is a viral hemorrhagic fever of humans and other primates caused by ebolaviruses.The disease has a high risk of death, killing between 25 and 90 percent of those infected, with an average of about 50 percent. This is often due to low blood pressure from fluid loss, and typically follows six to sixteen days after symptoms appear.</p>
@@ -161,7 +189,9 @@
 		<p>Prevention for Ebola virus disease includes infection control, isolation, and contact tracing.</p>
 		<h5>References</h5>
 		<a href="https://en.wikipedia.org/wiki/Ebola_virus_disease"> Wikipedia Ebola virus disease</a>
+		</div>
 
+		<div id="hepatitisB" style="display: none;">
 		<h1>Hepatitis B</h1>
 		<h3>Overview</h3>
 		<p>Hepatitis B is an infectious disease caused by the hepatitis B virus (HBV) that affects the liver. It can cause both acute and chronic infections</p>
@@ -175,7 +205,9 @@
 		<p>This disease is easily preventable by a vaccine.</p>
 		<h5>References</h5>
 		<a href="https://en.wikipedia.org/wiki/Hepatitis_B">Wikipedia Hepatitis B </a>
+		</div>
 
+		<div id="hiv" style="display: none;">
 		<h1>HIV/AIDS</h1>
 		<h3>Overview</h3>
 		<p>Human immunodeficiency virus infection and acquired immune deficiency syndrome (HIV/AIDS) is a spectrum of conditions caused by infection with the human immunodeficiency virus (HIV)</p>
@@ -189,6 +221,7 @@
 		<p>Sexual contact: Consistent condom use reduces the risk of HIV transmission by approximately 80% over the long term.[110] When condoms are used consistently by a couple in which one person is infected, the rate of HIV infection is less than 1% per year.<br>Pre-exposure:Antiretroviral treatment among people with HIV whose CD4 count ≤ 550 cells/µL is a very effective way to prevent HIV infection of their partner (a strategy known as treatment as prevention, or TASP).[130] TASP is associated with a 10 to 20 fold reduction in transmission risk.<br>Post-exposure:A course of antiretrovirals administered within 48 to 72 hours after exposure to HIV-positive blood or genital secretions is referred to as post-exposure prophylaxis (PEP). The use of the single agent zidovudine reduces the risk of a HIV infection five-fold following a needle-stick injury. As of 2013, the prevention regimen recommended in the United States consists of three medications—tenofovir, emtricitabine and raltegravir—as this may reduce the risk further.<br>Mother-to-child:Programs to prevent the vertical transmission of HIV (from mothers to children) can reduce rates of transmission by 92–99%. This primarily involves the use of a combination of antiviral medications during pregnancy and after birth in the infant and potentially includes bottle feeding rather than breastfeeding.</p>
 		<h5>References</h5>
 		<a href="https://en.wikipedia.org/wiki/HIV/AIDS">Wikipedia HIV/AIDS </a>
+		</div>
 
 		<h3>Historical statistics on our website</h3>
 		<p>Graph: Number of reports by year</p>
