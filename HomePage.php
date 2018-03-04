@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Bla bla</title>
+	<title>Disease Map: Home Page</title>
 	<link rel="stylesheet" type="text/css" href="HomePageCSS.css">
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,9 +12,9 @@
 		<h1> PhoTheHacker </h1>
 	</div>
 	<div class= "topnav">
-		<a href="HomePage.html">Home</a>
+		<a href="HomePage.php">Home</a>
 		<a href="about.html">About</a>
-		<a href="disease.html">Current Disease</a>
+		<a href="disease.php">Current Disease</a>
 	</div>
 	<div class="row">
 		<div class= "column map" id="map">
@@ -77,7 +77,7 @@
 	<div class="column form">
 		<h2>Input Form</h2>
 	<!-- <h3>Reporter</h3> -->
-	<form action="connection.php" target="_blank" method="post">
+	<form action="connection.php" method="post">
 		Name (optional):<br>
 		<input type="text" name="Name"><br>
 		

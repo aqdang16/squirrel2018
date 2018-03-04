@@ -28,7 +28,8 @@ $lon = $_REQUEST['lon'];
 
 $sql = "INSERT INTO epidemic (name, email, phone, yourself, famorhealth, age, gender, disease, startdate, enddate, Addition, term, locationlat, locationlon) VALUES ('$name', '$email', '$phone', '$yourself', '$famorhealth', '$age', '$gender', '$disease', '$startdate', '$enddate', '$addition', '$term', '$lat', '$lon')";
 if(mysqli_query($conn, $sql)){
-    echo "Records added successfully.";
+    header("Location: disease.php");
+    exit;
 } else{
     echo "ERROR: Could not able to execute $sql. " . mysqli_error($conn);
 }		

@@ -4,21 +4,23 @@
 	<link rel="stylesheet" type="text/css" href="HomePageCSS.css">
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Disease</title>
+	<title>Disease Map: Current Disease</title>
 </head>
 <body>
 	<div class="header">
-		<h1> header </h1>
+		<h1> PhoTheHacker </h1>
 	</div>
 	<div class= "topnav">
-		<a href="HomePage.html">Home</a>
+		<a href="HomePage.php">Home</a>
 		<a href="about.html">About</a>
-		<a href="disease.html">Current Disease</a>
+		<a href="disease.php">Current Disease</a>
 	</div>
 	
 	<div class="row">
 		<div class= "column map" id="map">
-			<script type="php">
+			<script >
+			<?php
+			// <!-- <script type="php"> -->
 				$servername = "localhost";
 				$username = "root";
 				$password = "";
@@ -36,36 +38,33 @@
 					$latlist = array();
 					$lonlist = array();
 					if (mysqli_num_rows($result) > 0) {
-						echo "<script type=\"text/javascript\">"
-						echo "var latlist = new array();"
-						echo "var lonlist = new array();"
+						
 						// $row = mysqli_fetch_assoc($result);
 						// echo $row["locationlat"] . "<br>";
 						while($row = mysqli_fetch_assoc($result)) {
 							array_push($latlist, $row["locationlat"]);
 							array_push($lonlist, $row["locationlon"]);
-							echo "latlist.push(" . $row["locationlat"] . ")"
-							echo "lonlist.push(" . $row["locationlon"] . ")"
-							// echo "lat: " . $row["locationlat"] . " lon: " . $row["locationlon"] ."<br>";
-						echo "\<\/script\>"
-						echo json_encode($latlist);
-						echo json_encode($lonlist);
 						}
+					$latlist_json = json_encode($latlist);
+					$lonlist_json = json_encode($lonlist);
 					} else {
 						echo "no result";
 					}
 				} else {
 					echo "ERROR: Could not able to execute $sql. " . mysqli_error($conn);
 				}
+
 				$conn->close();
+			?>
 			</script>
-			
-			<script type="text/javascript">
+			 <script type="text/javascript">
+			 
 				var map;
-				var latlist = ["32.325234","30","-75.21897"]
-				var lonlist = ["156.903274","0","-120.901724"]
-				// var latlist = <?php $latlist ?>;
-				// var lonlist = <?php $lonlist ?>;
+				// // var latlist = ["32.325234","30","-75.21897"]
+				// // var lonlist = ["156.903274","0","-120.901724"]
+				var latlist = <?=$latlist_json ?>;
+				var lonlist = <?=$lonlist_json ?>;
+
 
 				function initMap() {
 			    	map = new google.maps.Map(document.getElementById('map'), {
@@ -86,6 +85,7 @@
 			          // Browser doesn't support Geolocation
 			          handleLocationError(false, infoWindow, map.getCenter());
 			        }
+			  
 			        for (var i = 0; i<latlist.length; i++){
 				      	var latLng = new google.maps.LatLng(latlist[i],lonlist[i]);
 				      	var marker = new google.maps.Marker({
