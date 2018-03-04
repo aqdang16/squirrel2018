@@ -11,9 +11,9 @@
 		<h1> header </h1>
 	</div>
 	<div class= "topnav">
-		<a href="#">Link</a>
-		<a href="#">Link</a>
-		<a href="#">Link</a>
+		<a href="#">Home</a>
+		<a href="#">About</a>
+		<a href="#">Current Disease</a>
 	</div>
 	<div class="row">
 		<div class= "column map" id="map">
@@ -24,10 +24,10 @@
 		          zoom: 4,
 		          center: uluru
 		        });
-		        var marker = new google.maps.Marker({
-		          position: uluru,
-		          map: map
-		        });
+		        // var marker = new google.maps.Marker({
+		        //   position: uluru,
+		        //   map: map
+		        // });
 		      }
     </script>
 
@@ -42,7 +42,7 @@
 		<div class="column form">
 			<h2>Input Form</h2>
 	<!-- <h3>Reporter</h3> -->
-	<form action="/action_page.php" target="_blank">
+	<form action="form_processing.php" method="post">
 		Name (optional):<br>
 		<input type="text" name="Name"><br>
 		
@@ -64,9 +64,9 @@
 		Age:<br>
 		<input type="number" min="0" max="150" name="Age" required> year(s) old. <br>
 		Gender:<br>
-		<input type="radio" name="whoReport" value="Male"> Male
-		<input type="radio" name="whoReport" value="Female"> Female
-		<input type="radio" name="whoReport" value="Other"> Other<br>
+		<input type="radio" name="gender" value="Male"> Male
+		<input type="radio" name="gender" value="Female"> Female
+		<input type="radio" name="gender" value="Other"> Other<br>
 		What is the disease?<br>
 		<select name="disease" id="disease" required>
 			<option value="">None</option>
@@ -90,7 +90,7 @@
 		<input type="checkbox" name="term" val="True" required> I agree to the term of usage. <br>
 
 		<br>
-		<input type="submit" name="submitbutton" onclick="alert('Thank you! You have submitted your form')">
+		<input type="submit" name="submit" value="submit" onclick="alert('Thank you! You have submitted your form')">
 	</form>
 			
 		</div>
